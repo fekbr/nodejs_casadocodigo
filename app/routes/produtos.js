@@ -2,7 +2,7 @@ module.exports = function(app){
     app.get('/produtos', function(req, res){
         
         var connection = app.infra.connectionFactory();
-        var produtosBanco = new app.infra.produtosBanco(connection);
+        var produtosBanco = new app.infra.ProdutosDAO(connection);
 
        produtosBanco.lista(function(err, results){
             if(err!=null){
@@ -12,16 +12,5 @@ module.exports = function(app){
             }
         });
         connection.end();
-    });
-
-    app.get('produtos/remove', function(){
-
-        var connection = app.infra.connectionFactory;
-        var produtosBanco = app.infra.produtosBanco;
-        var produto = produtosBanco.carrega(connection. id, callback);
-
-        if(produto) {
-            produtosBanco.remove(connection, produto, callback);
-        }
     });
 }
