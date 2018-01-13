@@ -8,7 +8,14 @@ module.exports = function(app){
             if(err!=null){
                 console.log(err);
             } else {
-                res.render('produtos/lista', {lista:results});
+                res.format({
+                    html: function(){
+                        res.render('produtos/lista', {lista:results});
+                    },
+                    json: function(){
+                        res.json(results);
+                    }
+                })
             }
         });
         connection.end();
@@ -27,4 +34,13 @@ module.exports = function(app){
             res.redirect('/produtos');
         });
     });
+
+    app.get('/produtos/excluir', function(req, res){
+        res.render('produtos/formExcluir');
+    });
+
+    // app.delete('/produtos', function(req, res){
+    //     var id = req.body;
+    //     console.log(id);
+    // })
 }
