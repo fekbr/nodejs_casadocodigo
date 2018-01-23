@@ -1,7 +1,7 @@
 var http = require('http');
 
-describe('ProdutosController', function(done){
-    it('#listagem json',function(){
+describe('ProdutosController', function(){
+    it('#listagem json',function(done){
        
         var configuracoes = {
             hostname: 'localhost',
