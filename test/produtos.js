@@ -8,4 +8,16 @@ describe('#ProdutosController', function(){
         .expect('Content-Type', /json/)
         .expect(200, done);
     });
+
+    it('#cadastro de dados inválidos', function(done){
+        request.post('/produtos')
+        .send({titulo:"", descricao:"novo livro", preco:100})
+        .expect(400, done);
+    });
+
+    it('#cadastro de dados válidos', function(done){
+        request.post('/produtos')
+        .send({titulo:"NodeJS Supertest", descricao:"novo livro", preco:100})
+        .expect(302, done);
+    });
 });
