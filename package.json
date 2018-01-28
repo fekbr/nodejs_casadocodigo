@@ -20,5 +20,11 @@
   "devDependencies": {
     "mocha": "^4.1.0",
     "supertest": "^3.0.0"
+  },
+  "engines":{
+    "node" : "8.9.3"
+  },
+  "scripts": {
+    "start" : "node app"
   }
 }
